@@ -1,0 +1,29 @@
+# virtual environment
+env/
+venv/
+
+# python cache
+__pycache__/
+*.pyc
+
+# model weights
+model/
+*.pt
+*.bin
+*.safetensors
+
+# dataset files
+data/
+
+# logs
+*.log
+
+# notebook checkpoints
+.ipynb_checkpoints/
+
+# system files
+.DS_Store
+Thumbs.db
+
+# vscode settings
+.vscode/

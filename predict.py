@@ -45,15 +45,21 @@ In 4 - 5 sentences, explain specifically what patterns in this posting make it l
 Mention exact suspicious phrases if fake. Be direct and simple — the reader is a regular Indian job seeker, not a tech expert.
 Do not start with "I" or "The model"."""
 
-    response = requests.post(
-        'http://localhost:11434/api/generate',
-        json={
-            "model": "llama3.2",
-            "prompt": prompt,
-            "stream": False
-        }
-    )
-    return response.json()['response'].strip()
+    try:
+        response = requests.post(
+            'http://localhost:11434/api/generate',
+            json={
+                "model": "llama3.2",
+                "prompt": prompt,
+                "stream": False
+            },
+            timeout=5
+        )
+
+        return response.json()['response'].strip()
+
+    except Exception:
+        return "Explanation unavailable in container mode. Prediction shown using BERT + signal engine."
 
 # ─────────────────────────────────────────
 # 4. COMBINED FUNCTION (what app.py will call)

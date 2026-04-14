@@ -1,0 +1,8 @@
+env/
+model/
+data/
+__pycache__/
+*.pt
+*.bin
+*.safetensors
+.git

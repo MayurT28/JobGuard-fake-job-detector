@@ -129,6 +129,36 @@ Swagger docs available at:
 
 http://127.0.0.1:8000/docs
 
+
+## Architecture Overview
+
+JobGuard detects potentially fake job postings using a hybrid AI pipeline deployed on AWS.
+
+User Input (Job Description)
+        ↓
+Streamlit Web App (UI)
+        ↓
+Prediction Engine (predict.py)
+        ↓
+BERT Model (Hugging Face Hosted)
+        ↓
+Rule-Based Fraud Signal Detector
+        ↓
+Combined Verdict Generator
+        ↓
+Optional Explanation Engine (Ollama – local only)
+        ↓
+Final Risk Score + Explanation Output
+
+Deployment Stack:
+- Streamlit frontend
+- BERT transformer classifier (Transformers)
+- Rule-based fraud signal engine
+- Docker containerization
+- AWS EC2 cloud hosting
+- Hugging Face model storage
+
+
 ## Author
 
 Mayur Tonge

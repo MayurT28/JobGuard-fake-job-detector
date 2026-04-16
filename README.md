@@ -6,6 +6,18 @@ The system is designed for Indian job portal postings and provides real-time tru
 
 ---
 
+## Live Demo
+
+Access JobGuard here:
+http://jobguard-demo.duckdns.org:8501
+
+JobGuard detects potentially fake job postings using:
+- BERT-based classification
+- rule-based fraud signal detection
+- optional LLM explanations (local mode with Ollama)
+
+---
+
 ## Features
 
 * Fake job detection using fine-tuned BERT transformer model

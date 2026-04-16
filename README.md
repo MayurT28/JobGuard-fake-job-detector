@@ -107,6 +107,15 @@ REST API inference endpoint
 Extended recruiter verification layer
 
 ---
+## API Usage
+
+Start API server:
+
+python -m uvicorn api:app --reload
+
+Swagger docs available at:
+
+http://127.0.0.1:8000/docs
 
 ## Author
 

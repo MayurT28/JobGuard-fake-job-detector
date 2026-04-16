@@ -6,8 +6,8 @@ from transformers import BertForSequenceClassification, BertTokenizer
 # 1. LOAD MODEL (once, when file is imported)
 # ─────────────────────────────────────────
 print("Loading model...")
-model = BertForSequenceClassification.from_pretrained('model/bert_fakejob')
-tokenizer = BertTokenizer.from_pretrained('model/bert_fakejob')
+model = BertForSequenceClassification.from_pretrained("MayurT28/jobguard-bert")
+tokenizer = BertTokenizer.from_pretrained("MayurT28/jobguard-bert")
 model.eval()
 print("Model ready.")
 
@@ -53,13 +53,16 @@ Do not start with "I" or "The model"."""
                 "prompt": prompt,
                 "stream": False
             },
-            timeout=5
+            timeout=30
         )
 
         return response.json()['response'].strip()
 
-    except Exception:
-        return "Explanation unavailable in container mode. Prediction shown using BERT + signal engine."
+    except requests.exceptions.ConnectionError:
+        return "Detailed AI explanation available only when local LLM support (Ollama) is enabled. Prediction shown using BERT + signal engine."
+
+    except Exception as e:
+        return f"Ollama error: {str(e)}"
 
 # ─────────────────────────────────────────
 # 4. COMBINED FUNCTION (what app.py will call)
